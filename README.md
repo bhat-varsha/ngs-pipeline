@@ -1,4 +1,4 @@
-# TP53 NGS Analysis Pipeline
+# NGS Analysis Pipeline
 
 This repository demonstrates a basic RNA-seq preprocessing workflow using public SRA sequencing data.
 

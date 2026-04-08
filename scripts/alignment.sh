@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Step 5: Alignment using HISAT2
-# Requires reference genome index
+# Requires reference genome index(accordingly)
 hisat2-build genome.fa genome_index
 
 hisat2 -p 8 -x genome_index \

@@ -18,6 +18,7 @@ Pipeline Steps:
 - SAMtools
 - Conda
 - Linux (WSL)
+- version control
 
 
 ## Installation

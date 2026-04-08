@@ -1,0 +1,47 @@
+name: NGS Pipeline CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  ngs-workflow:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y fastqc trimmomatic hisat2 samtools
+
+    - name: Give permission to scripts
+      run: |
+        chmod +x scripts/*.sh
+
+    - name: Run Data Download
+      run: |
+        bash scripts/download_data.sh
+
+    - name: Run Quality Control
+      run: |
+        bash scripts/qc.sh
+
+    - name: Run Trimming
+      run: |
+        bash scripts/trimming.sh
+    
+    - name: Build HISAT2 Index
+      run: |
+        hisat2-build genome.fa genome_index
+
+    - name: Run Alignment (HISAT2)
+      run: |
+        bash scripts/alignment.sh
+
+    - name: Show Output Files
+      run: |
+        ls -lh

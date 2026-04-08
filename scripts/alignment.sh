@@ -2,6 +2,7 @@
 
 # Step 5: Alignment using HISAT2
 # Requires reference genome index
+hisat2-build genome.fa genome_index
 
 hisat2 -p 8 -x genome_index \
 -1 R1_paired.fastq \
